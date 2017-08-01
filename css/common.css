@@ -1,0 +1,18 @@
+/*
+* 样式重置
+*/
+body{margin:0;padding:0 0 12px 0;background:#fff;font-size:14px;line-height:22px;}
+div,p,li{font-family:"Verdana", "Arial", "Helvetica", "sans-serif";font-size:14px;}
+form,ul,li,p,h1,h2,h3,h4,h5,h6{margin:0;padding:0;}
+input,select{font-size:13px;line-height:16px;}
+img{border:0;}
+input,button,select{outline: none;}
+ul,li{list-style-type:none;}
+li{font-size:14px;}
+a{color:#404040;text-decoration:none;}
+a:hover{color:#bd0a01;text-decoration:none;cursor: pointer;}
+i,s{font-style: normal;}
+label{font-weight:700;}
+button:hover{
+    cursor: pointer;
+}

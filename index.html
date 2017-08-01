@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+            <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+            <link rel="stylesheet" href="//cdn.bootcss.com/uikit/2.25.0/css/uikit.css" />
+            <link rel="stylesheet" href="css/components/form-advanced.css">
+            <link rel="stylesheet" href="css/components/datepicker.css">
+            <script src="https://cdn.bootcss.com/uikit/2.25.0/js/uikit.js"></script>
+            <link rel="stylesheet" href="css/components/tooltip.css">
+            <script src="js/components/tooltip.js"></script>
+            <script src="js/components/pagination.js"></script>
+            <script src="http://cdn.bootcss.com/echarts/3.6.2/echarts.common.js"></script>
+            <script src="js/components/datepicker.js"></script>
+            <script src="http://mockjs.com/dist/mock.js"></script>
+            <script src="js/index.js"></script>
+            <link rel="stylesheet" href="css/common.css">
+            <link rel="stylesheet" href="css/index.css">
+            <title>维权系统</title>
+        </head>
+<body>
+<div class="wrapper">
+    <header>
+        <div class="headerwrapper">
+            <nav class="uk-navbar">
+                <a href="" class="uk-navbar-brand"></a>
+                <ul class="uk-navbar-nav">
+                    <li><a href="#"><i class="brand">IC</i></a></li>
+                    <li><a href="#"><i class="uk-icon-search"></i>维权查询</a></li>
+                    <li><a href="www.dfic.cn"><i class="uk-icon-home"></i>IC主站</a></li>
+                </ul>
+                <div class="uk-navbar-flip">
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-parent" data-uk-dropdown>
+                            <a href="">wushubing<i class="uk-icon-sort-down"></i></a>
+                            <div class="uk-dropdown uk-dropdown-navbar">
+                                <ul class="uk-nav uk-nav-navbar">
+                                    <li><a>退出登录</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="main">
+        <div class="mainwrapper">
+            <div class="maintop">
+                <form class="uk-form uk-grid" style="padding: 20px;border-bottom: 1px solid #eeeeee;">
+                    <div class="uk-width-2-10">
+                        <div class="uk-form-controls uk-form-controls-text typebtn" style="border-right: 1px solid #eeeeee;text-align: center;">
+                            <input type="radio" name="radio" checked="checked"> <label>新闻查询</label><br><br>
+                            <input type="radio" name="radio"> <label>创意查询</label>
+                        </div>
+                    </div>
+                    <div class="uk-width-6-10">
+                        <div class="uk-grid">
+                            <div class="uk-form-col uk-width-1-2">
+                                <label class="uk-form-label">域名</label>
+                                <div class="uk-form-controls">
+                                    <input type="text" placeholder="请输入域名 如 qq.com" style="width: 70%;" >
+                                </div>
+                            </div>
+
+                            <div class="uk-form-row uk-width-1-2">
+                                <label class="uk-form-label">维权</label><br/>
+                                <select class="uk-width-2-3" id="select1">
+                                    <option class="xw">全部</option>
+                                    <option class="xw">国内摄影师</option>
+                                    <option class="xw">国外独家资源</option>
+                                    <option class="xw">自有摄影师</option>
+                                    <option class="xw">百人万元</option>
+                                    <option class="xw">中超专家</option>
+                                    <option class="xw">标记独家</option>
+                                    <option class="xw">中超图片</option>
+                                    <option class="xw">金牌摄影师</option>
+                                    <option class="xw">创意独家摄影师</option>
+                                    <option class="cy">全部</option>
+                                    <option class="cy">海外独家</option>
+                                    <option class="cy">国内签约</option>
+                                    <option class="cy">东方IC</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-form-col uk-width-2-10">
+                        <label class="uk-form-label"></label><br>
+                        <button class="uk-button uk-container-center" style="background-color: #00aff2;border-radius: 5px;">查询</button>
+                        <span class="uk-button uk-container-center btntog" style="background-color: white;">高级查询</span><i class="uk-icon-sort-down"></i>
+                    </div>
+                </form>
+                <script>
+                    $(".btntog").click(function(){
+                        $(".formtoggle").toggle(500);
+                    });
+                </script>
+                <form class="uk-grid uk-form formtoggle" style="padding: 20px 5%;display: none;">
+                    <div class="uk-width-1-2">
+                        <label style="text-indent: 20%">图片ID</label>
+                        <input type="text" style="width: 70%;" placeholder="请从东方IC图片详情页的URL中获取ID">
+                    </div>
+                    <div class="uk-width-1-2">
+                        <label>抓取时间</label>
+                        <div class="uk-form-icon">
+                            <i class="uk-icon-calendar"></i>
+                            <input type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                        </div>
+                        <span>--</span>
+                        <div class="uk-form-icon">
+                            <i class="uk-icon-calendar"></i>
+                            <input type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="mainmiddle uk-flex">
+                <div class="mm1 uk-width-1-5 uk-panel uk-panel-box" style="border-color: #3f51b5">
+                    <h3>图片匹配量</h3>
+                    <p><span class="sumimg"></span></p>
+                    <span class="mmcount" style="color: #3f51b5;">上周新增<i class="szxz"></i></span>
+                </div>
+                <div class="mm2 uk-width-1-5 uk-panel uk-panel-box" style="border-color: #00bcd4">
+                    <h3>可维权图片匹配总量</h3>
+                    <p><span class="sumimg"></span></p>
+                    <span class="mmcount" style="color: #00bcd4">上周新增<i class="szxz">1,020</i></span>
+                </div>
+                <div class="mm3 uk-width-1-5 uk-panel uk-panel-box" style="border-color: #f50057">
+                    <h3>新闻图片匹配总量</h3>
+                    <p><span class="sumimg"></span></p>
+                    <span class="mmcount" style="color: #f50057">上周新增<i class="szxz"></i></span>
+                </div>
+                <div class="mm4 uk-width-1-5 uk-panel uk-panel-box" style="border-color: #009688">
+                    <h3>创意图片匹配总量</h3>
+                    <p><span class="sumimg"></span></p>
+                    <span class="mmcount" style="color: #009688;">上周新增<i class="szxz"></i></span>
+                </div>
+                <div class="mm5 uk-width-1-5 uk-panel uk-panel-box" style="border-color: #795548">
+                    <h3>区域匹配总量 / 监控域名总量</h3>
+                    <p><span class="sumimg"></span><span style="padding: 0 10px;">/</span><span class="sumimg1"></span></p>
+                    <span class="mmcount" style="color: #795548;">上周匹配域名总量为<i class="szxz"></i></span>
+                </div>
+            </div>
+            <div class="mainbot">
+                <div class="mbtitle">
+                    <h2>维权数据统计周报</h2>
+                    <span>（ 统计时间：<i id="begin"></i> - <i id="end"></i> ）</span>
+                </div>
+                <div class="mbcon">
+                    <div class="mbform" style="border-top: 3px solid #ff5722;">
+                        <div>
+                            <h3>周维权线索</h3>
+                            <p><button class="active firstbtn">第一次匹配</button><button class="secbtn">自有摄影师</button></p>
+                        </div>
+                        <div class="tablewrapper">
+                            <table class="uk-table" id="firstmatch" style="display: table;">
+                                <tbody id="zwqxs1">
+                                </tbody>
+                            </table>
+                            <table class="uk-table" id="ourgrapher" style="display: none;">
+                                <tbody id="zwqxs2">
+                                </tbody>
+                            </table>
+                            <div>
+                                <ul class="uk-pagination pagination1" style="text-align: center;">
+                                    <li class="uk-disabled"><a><i class="uk-icon-angle-double-left"></i></a></li>
+                                    <li><a><span><i class="uk-icon-angle-double-right"></i></span></a></li>
+                                </ul>
+                                <ul class="uk-pagination pagination2" style="text-align: center;display: none;">
+                                    <li class="uk-disabled"><a><i class="uk-icon-angle-double-left"></i></a></li>
+                                    <li><a><span><i class="uk-icon-angle-double-right"></i></span></a></li>
+                                </ul>
+                            </div>
+                            <script type="text/javascript">
+                                $('.firstbtn').click(function () {
+                                    $('.secbtn').removeClass('active');
+                                    $('.firstbtn').addClass('active');
+                                    $('#ourgrapher').css("display","none");
+                                    $('#firstmatch').css("display","table");
+                                    $('.pagination1').css("display","block");
+                                    $('.pagination2').css("display","none");
+                                });
+                                $('.secbtn').click(function () {
+                                    $('.firstbtn').removeClass('active');
+                                    $('.secbtn').addClass('active');
+                                    $('#firstmatch').css("display","none");
+                                    $('#ourgrapher').css("display","table");
+                                    $('.pagination2').css("display","block");
+                                    $('.pagination1').css("display","none");
+                                })
+                            </script>
+                        </div>
+                    </div>
+                    <div class="mbform" style="border-top: 3px solid #00c853;">
+                        <div>
+                            <h3>周新增目标域名</h3>
+                            <p><button class="active newsbtn">新闻类</button><button class="crebtn">创意类</button></p>
+                        </div>
+                        <div class="tablewrapper">
+                            <table class="uk-table news" id="table_news" style="display: table">
+                                <thead>
+                                <tr>
+                                    <th>类型</th>
+                                    <th>域名</th>
+                                    <th>匹配数量</th>
+                                </tr>
+                                </thead>
+                                <tbody class="zxzmbym1">
+                                </tbody>
+                            </table>
+                            <table class="uk-table creative" id="table_cre" style="display: none;margin-top: 0;">
+                                <thead>
+                                <tr>
+                                    <th>类型</th>
+                                    <th>域名</th>
+                                    <th>匹配数量</th>
+                                </tr>
+                                </thead>
+                                <tbody class="zxzmbym2">
+                                </tbody>
+                            </table>
+                            <div>
+                                <ul class="uk-pagination pagination3" style="text-align: center;">
+                                    <li class="uk-disabled"><span><i class="uk-icon-angle-double-left"></i></span></li>
+                                    <li><span><i class="uk-icon-angle-double-right"></i></span></li>
+                                </ul>
+                                <ul class="uk-pagination pagination4" style="text-align: center;display: none">
+                                    <li class="uk-disabled"><a><i class="uk-icon-angle-double-left"></i></a></li>
+                                    <li><a><span><i class="uk-icon-angle-double-right"></i></span></a></li>
+                                </ul>
+                            </div>
+                            <script type="text/javascript">
+                                $('.crebtn').click(function () {
+                                    $('.newsbtn').removeClass('active');
+                                    $('.crebtn').addClass('active');
+                                    $('.news').css("display","none");
+                                    $('.creative').css("display","table");
+                                    $('.pagination4').css("display","block");
+                                    $('.pagination3').css("display","none");
+                                });
+                                $('.newsbtn').click(function () {
+                                    $('.crebtn').removeClass('active');
+                                    $('.newsbtn').addClass('active');
+                                    $('.creative').css("display","none");
+                                    $('.news').css("display","table");
+                                    $('.pagination3').css("display","block");
+                                    $('.pagination4').css("display","none");
+                                })
+                            </script>
+                        </div>
+                    </div>
+                    <div class="mbform" style="border-top: 3px solid #00bfa5;">
+                        <div>
+                            <i class="uk-icon-line-chart"></i>
+                            <h3>周新增可维权匹配情况（新闻类）</h3>
+                        </div>
+                        <div id="chart1" style="height: 345px;width: 100%;"></div>
+
+                    </div>
+                    <div class="mbform" style="border-top: 3px solid #8bc34a;">
+                        <div>
+                            <i class="uk-icon-line-chart"></i>
+                            <h3>周新增可维权匹配情况（创意类）</h3>
+                        </div>
+                        <div id="chart2" style="height: 345px;width: 100%;"></div>
+                    </div>
+                    <div class="mbform" style="border-top: 3px solid #00bcd4;height: auto;">
+                        <div>
+                            <h3>周目标域名匹配量TOP10（新闻类）</h3>
+                        </div>
+                        <div>
+                            <table class="uk-table">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>域名</th>
+                                    <th>匹配数量</th>
+                                </tr>
+                                </thead>
+                                <tbody id="newstoplist">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="mbform" style="border-top: 3px solid #3f51b5;height: auto;">
+                        <div>
+                            <h3>周目标域名匹配量TOP10（创意类）</h3>
+                        </div>
+                        <div>
+                            <table class="uk-table">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>域名</th>
+                                    <th>匹配数量</th>
+                                </tr>
+                                </thead>
+                                <tbody id="cretivetoplist">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="result">
+        <div>
+            <h3>新闻图片查询结果</h3>
+            <p>共找到<span>21,458,129</span>条记录&nbsp;&nbsp;&nbsp;<button id="importbtn" data-uk-tooltip title="最多可导出1000条数据">导出Excel</button></p>
+        </div>
+        <div>
+            <table class="uk-table result_table uk-table-striped uk-table-hover">
+                <thead>
+                <tr>
+                    <th class="sortbtn">抓取时间<img src="images/sort1.png"></th>
+                    <th>对方网址</th>
+                    <th class="sortbtn">发布时间<img src="images/sort1.png"></th>
+                    <th>侵权图</th>
+                    <th>IC图</th>
+                    <th>图片ID</th>
+                    <th class="sortbtn">入库时间<img src="images/sort1.png"></th>
+                    <th>资源</th>
+                    <th>摄影师</th>
+                    <th>维权</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>2017-7-10</td>
+                    <td>www.baidu.com</td>
+                    <td>2017-7-5</td>
+                    <td><img src="https://cdn.pixabay.com/photo/2017/07/07/12/31/lime-2481346__340.jpg"></td>
+                    <td><img src="https://cdn.pixabay.com/photo/2017/07/18/18/24/dove-2516641__340.jpg"></td>
+                    <td>20157846825012</td>
+                    <td>2014-4-5</td>
+                    <td>rex</td>
+                    <td>摄影师</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2017-7-10</td>
+                    <td>www.baidu.com</td>
+                    <td>2017-7-5</td>
+                    <td><img src="https://cdn.pixabay.com/photo/2017/07/03/22/28/cat-2469252__340.jpg"></td>
+                    <td><img src="https://cdn.pixabay.com/photo/2017/07/18/12/03/middle-ages-2515653__340.png"></td>
+                    <td>20157846825012</td>
+                    <td>2014-4-5</td>
+                    <td>rex</td>
+                    <td>摄影师</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2017-7-10</td>
+                    <td>www.baidu.com</td>
+                    <td>2017-7-5</td>
+                    <td><img src="https://cdn.pixabay.com/photo/2017/07/18/16/20/tiger-2516232__340.jpg"></td>
+                    <td><img src="https://cdn.pixabay.com/photo/2017/07/20/17/25/owl-2523019__340.png"></td>
+                    <td>20157846825012</td>
+                    <td>2014-4-5</td>
+                    <td>rex</td>
+                    <td>摄影师</td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <ul class="uk-pagination pagination5" style="text-align: right;">
+                <li class="uk-disabled"><span><i class="uk-icon-angle-double-left"></i></span></li>
+                <li class="uk-active"><span>1</span></li>
+                <li><span>2</span></li>
+                <li><span>3</span></li>
+                <li><span><i class="uk-icon-angle-double-right"></i></span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

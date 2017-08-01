@@ -1,0 +1,189 @@
+/*
+导航栏
+*/
+.wrapper{
+    width: 100%;
+    height: auto;
+    background-color: #ECF0F5;
+}
+header{
+    background-color: #0097a7;
+}
+.headerwrapper{
+    width: 94%;
+    text-align: center;
+    margin: 0 auto;
+}
+header .uk-navbar{
+   background: #0097a7;
+}
+header .brand{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: lightgrey;
+    line-height: 30px;
+    text-align: center;
+    font-weight: 700;
+    margin: 5px auto;
+}
+.cy{
+    display: none;
+}
+
+.main{
+    margin: 40px auto;
+}
+.main .mainwrapper{
+    width: 90%;
+    margin:0 auto;
+    border-top: 2px solid #9e9e9e;
+}
+.main .maintop{
+    background: white;
+}
+
+
+.mainmiddle{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    flex-wrap: wrap;
+}
+.mainmiddle div{
+    width: 18%;
+    border-top: 2px solid #ffffff;
+    background-color: white;
+}
+.uk-panel{
+    min-width: 200px;
+}
+.uk-panel h3{
+    font-size: 16px;
+    line-height: 36px;
+    border-bottom: 1px solid #eeeeee;
+}
+.uk-panel p span{
+    font-size: 24px;
+    line-height: 36px;
+}
+.uk-panel span{
+    font-size: 18px;
+    line-height: 36px;
+}
+.uk-panel .mmcount{
+    font-size: 14px;
+    line-height:18px;
+}
+.mainbot{
+    margin-top: 80px;
+    width: 100%;
+}
+.mainbot .mbtitle h2{
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 50px;
+}
+.mbtitle span{
+    font-size: 16px;
+    color: #9e9e9e;
+}
+.mbcon{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.mbcon .mbform{
+    position: relative;
+    width: 48%;
+    min-width: 550px;
+    height: 400px;
+    margin-bottom: 30px;
+    background: white;
+    overflow: hidden;
+}
+
+.mbform h3{
+    text-indent: 5px;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 50px;
+}
+.mbform p{
+    display: inline-block;
+    float: right;
+    line-height: 50px;
+    margin-right: 20px;
+}
+
+.mbform p button{
+    padding: 5px;
+    border:1px solid #00c853;
+    background: none;
+    color: #00c853;
+}
+.mbform p .active{
+    background: #00c853;
+    color: white;
+}
+.result{
+    border-top: 3px solid #3f51b5;
+    height: auto;
+    width: 90%;
+    margin:0 auto;
+    background: white;
+    display: block;
+    position: relative;
+}
+.result h3{
+    text-indent: 5px;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 50px;
+}
+.result p{
+    display: inline-block;
+    float: right;
+    line-height: 50px;
+    margin-right: 20px;
+}
+.result_table thead img{
+    height: 22px;
+}
+.result_table tbody img{
+    width: 150px;
+    height: auto;
+}
+tbody{
+   height: 310px;
+    overflow: hidden;
+}
+.uk-table td{
+    vertical-align: middle;
+}
+.uk-table tbody tr:hover{
+    background-color: #cccccc;
+    cursor: pointer;
+}
+#importbtn{
+    border:none;
+    padding: 5px;
+    line-height: 22px;
+    border-radius: 3px;
+    background-color: #00a8e6;
+    color: white;
+}
+.mbform .uk-pagination{
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+}
+.tablewrapper{
+    height: 310px;
+    overflow: hidden;
+}
+.sortbtn:hover{
+    cursor: pointer;
+}
